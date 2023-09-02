@@ -9,10 +9,10 @@ import { AiFillGithub } from "react-icons/ai";
 const Login: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  async function loginWithGithub() {
+  async function socialLogin(key: string) {
     setIsLoading(true);
     try {
-      await signIn("google");
+      await signIn(key);
     } catch (error) {
       console.log({ error });
       toast.error("Something went wrong with your login.");
@@ -30,7 +30,11 @@ const Login: FC = () => {
             Sign in to your account
           </h2>
         </div>
-        <Button onClick={loginWithGithub} className="max-w-sm w-full mx-auto">
+        <Button
+          disabled={isLoading}
+          onClick={() => socialLogin("google")}
+          className="max-w-sm w-full mx-auto"
+        >
           {isLoading ? (
             <Loader2 className="h-4 w-4 mr-2 animate-spin" />
           ) : (
@@ -66,8 +70,17 @@ const Login: FC = () => {
           Login with Google
         </Button>
 
-        <Button className="w-full max-w-sm" onClick={() => signIn("github")}>
-          <AiFillGithub className="w-4 h-4 mr-2" /> Login with Github
+        <Button
+          disabled={isLoading}
+          className="w-full max-w-sm"
+          onClick={() => socialLogin("github")}
+        >
+          {isLoading ? (
+            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+          ) : (
+            <AiFillGithub className="w-4 h-4 mr-2" />
+          )}{" "}
+          Login with Github
         </Button>
       </div>
     </div>
