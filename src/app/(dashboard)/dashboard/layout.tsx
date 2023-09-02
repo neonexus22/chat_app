@@ -1,4 +1,5 @@
 import { Icon, Icons } from "@/components/Icons";
+import SignOutButton from "@/components/SignOutButton";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,6 +84,7 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
                   </span>
                 </div>
               </div>
+              <SignOutButton className="h-full aspect-square" />
             </li>
           </ul>
         </nav>
