@@ -5,7 +5,7 @@ import React from "react";
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
 
-  return <div>Dashboard</div>;
+  return <div>dashboard</div>;
 };
 
 export default Dashboard;
