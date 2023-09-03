@@ -4,7 +4,6 @@ import React from "react";
 
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
-  console.log({ session });
 
   return <div>Dashboard</div>;
 };
