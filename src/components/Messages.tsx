@@ -40,13 +40,16 @@ const Messages: FC<MessaagesProps> = ({ initialMessages, sessionId }) => {
               })}
             >
               <div
-                className={cn("flex flex-col spay-2 text-base max-w-xs mx-2", {
-                  "order-1 items-end": isCurrentUser,
-                  "order-2 items-start": !isCurrentUser,
-                })}
+                className={cn(
+                  "flex flex-col space-y-2 text-base max-w-xs mx-2",
+                  {
+                    "order-1 items-end": isCurrentUser,
+                    "order-2 items-start": !isCurrentUser,
+                  }
+                )}
               >
                 <span
-                  className={cn("px-4 py-2 rounded-lg inline-block", {
+                  className={cn("px-4 py-2 rounded-xl inline-block", {
                     "bg-indigo-600 tex-white": isCurrentUser,
                     "bg-gray-200 text-gray-900": !isCurrentUser,
                     "rounded-br-none":

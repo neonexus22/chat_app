@@ -1,19 +1,33 @@
 "use client";
+import axios from "axios";
 import { Loader2 } from "lucide-react";
 import React, { FC, useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 import TextAreaAutosize from "react-textarea-autosize";
 import { Button } from "./ui/button";
 
 interface ChatInputProps {
   chatPartner: User;
+  chatId: string;
 }
 
-const ChatInput: FC<ChatInputProps> = ({ chatPartner }) => {
+const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
   const [input, setInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const sendMessage = () => {};
+  const sendMessage = async () => {
+    setIsLoading(true);
+    await axios.post("/api/messages/send", { text: input, chatId });
+    setInput("");
+    textareaRef.current?.focus();
+    try {
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="border-t broder-gray-200 px-4 pt-4 mb-2 sm:mb:0">
@@ -51,7 +65,9 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner }) => {
               onClick={sendMessage}
               type="submit"
             >
-              {isLoading ? <Loader2 className="w-4 h-4" /> : null}
+              {isLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              ) : null}
               Post
             </Button>
           </div>
