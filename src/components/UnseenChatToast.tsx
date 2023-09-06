@@ -21,7 +21,6 @@ const UnseenChatToast: FC<UnseenChatToastProps> = ({
   senderName,
   senderMessage,
 }) => {
-  console.log("reached here 3");
   return (
     <div
       className={cn(

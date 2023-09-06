@@ -26,13 +26,11 @@ const SidebarChatList = ({ friends, sessionId }: SidebarChatListProps) => {
     pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
 
     const chatHandler = (message: ExtendedMessage) => {
-      console.log("reached here 1");
       const shouldNotify =
         pathname !==
         `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`;
 
       if (!shouldNotify) return;
-      console.log("reached here 2");
 
       // should be notified
       toast.custom((t) => (
