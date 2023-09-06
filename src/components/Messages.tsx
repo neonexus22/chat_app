@@ -39,7 +39,7 @@ const Messages: FC<MessaagesProps> = ({
       pusherClient.unsubscribe(toPusherKey(`chat:${chatId}`));
       pusherClient.unbind("incoming_message", messageHandler);
     };
-  }, []);
+  }, [chatId]);
 
   const formatDateTime = (dateTime: number) => {
     return format(dateTime, "hh:mm aaa");
