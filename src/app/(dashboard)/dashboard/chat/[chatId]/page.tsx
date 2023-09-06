@@ -77,6 +77,7 @@ const ChatDetails = async ({ params }: ChatDetailsProps) => {
         </div>
       </div>
       <Messages
+        chatId={chatId}
         sessionImg={session.user.image}
         chatPartner={chatPartner}
         initialMessages={initialMessages}
