@@ -2,7 +2,7 @@
 
 import axios, { AxiosError } from "axios";
 import { addFriendValidator } from "@/lib/validations/add-friend";
-import { Button } from "./ui/button";
+import { Button } from "./ui/Button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

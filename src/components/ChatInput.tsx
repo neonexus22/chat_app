@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import React, { FC, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 import TextAreaAutosize from "react-textarea-autosize";
-import { Button } from "./ui/button";
+import { Button } from "./ui/Button";
 
 interface ChatInputProps {
   chatPartner: User;
@@ -59,12 +59,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
         </div>
         <div className="absolute right-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
           <div className="flex-shrink-0">
-            <Button
-              className="bg-black text-white rounded-xl hover:text-black hover:border hover:border-black"
-              disabled={isLoading}
-              onClick={sendMessage}
-              type="submit"
-            >
+            <Button disabled={isLoading} onClick={sendMessage} type="submit">
               {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin mr-2" />
               ) : null}
